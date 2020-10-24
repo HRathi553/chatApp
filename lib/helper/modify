@@ -1,0 +1,58 @@
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: appBarMain(context),
+      body: Container(
+        child: Stack(
+          children: [
+            ChatMessageList(),
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                color: Color(0x54FFFFFF),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                         controller: messageController,
+                        style: TextStyle(color: Colors.white),
+
+                        decoration: InputDecoration(
+                            hintText: "send message...",
+                            hintStyle: TextStyle(color: Colors.white54),
+                            border: InputBorder.none
+                        ),
+                      ),
+                    ),
+
+                    GestureDetector(
+                      onTap: () {
+                       sendMessage();
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                const Color(0x36FFFFFF),
+                                const Color(0x0FFFFFFF)
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(40)
+                        ),
+                        padding: EdgeInsets.all(12),
+                        child: Image.asset("assets/images/send.png"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
